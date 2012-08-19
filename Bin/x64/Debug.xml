@@ -1,0 +1,905 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Debug</name>
+    </assembly>
+    <members>
+        <member name="F:Garm.Debug.BruteSettingsDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Garm.Debug.BruteSettingsDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Garm.Debug.BruteSettingsDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Debug.DebugWindow">
+            <summary>
+             A Winforms window displaying debuginfo
+            </summary>
+        </member>
+        <member name="M:Debug.DebugWindow.#ctor(Garm.Base.Interfaces.IRunManager)">
+            <summary>
+            Creates a new DebugWindow
+            </summary>
+            <param name="runManager">RunManager reference</param>
+        </member>
+        <member name="M:Debug.DebugWindow.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="F:Debug.DebugWindow.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Debug.DebugWindow.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Garm.Debug.Editor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Garm.Debug.Editor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Garm.Debug.Editor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.Arranger">
+            <summary>
+            The Arranger control
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.Arranger.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Arranger.#ctor">
+            <summary>
+            Creates a new arranger control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Arranger.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Arranger.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.Fader">
+            <summary>
+            Summary description for Fader.
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.Fader.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Fader.#ctor">
+            <summary>
+            Creates a new Fader control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Fader.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Fader.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnPaint(System.Windows.Forms.PaintEventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Fader.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnMouseDown(System.Windows.Forms.MouseEventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Fader.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnMouseMove(System.Windows.Forms.MouseEventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Fader.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnMouseUp(System.Windows.Forms.MouseEventArgs)"/>
+            </summary>        
+        </member>
+        <member name="M:NAudio.Gui.Fader.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.Fader.Minimum">
+            <summary>
+            Minimum value of this fader
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.Fader.Maximum">
+            <summary>
+            Maximum value of this fader
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.Fader.Value">
+            <summary>
+            Current value of this fader
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.Fader.Orientation">
+            <summary>
+            Fader orientation
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.Graph">
+            <summary>
+            Graph control
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.Graph.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Graph.#ctor">
+            <summary>
+            Creates a new graph control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Graph.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Graph.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Graph.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnPaint(System.Windows.Forms.PaintEventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Graph.SetData(System.Double[])">
+            <summary>
+            sets graph data
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.LcdPanel">
+            <summary>
+            LCD panel control
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.LcdPanel.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.LcdPanel.#ctor">
+            <summary>
+            Creates a new LCD panel
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.LcdPanel.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.LcdPanel.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnPaint(System.Windows.Forms.PaintEventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.LcdPanel.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.LcdPanel.OffColor">
+            <summary>
+            Pixel colour for pixels turned off
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.LcdPanel.OnColor">
+            <summary>
+            Pixel colour for pixels turned on
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.PanSlider">
+            <summary>
+            Pan slider control
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.PanSlider.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.PanSlider.#ctor">
+            <summary>
+            Creates a new PanSlider control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.PanSlider.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.PanSlider.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.PanSlider.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnPaint(System.Windows.Forms.PaintEventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.PanSlider.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnMouseMove(System.Windows.Forms.MouseEventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.PanSlider.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnMouseDown(System.Windows.Forms.MouseEventArgs)"/>
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="E:NAudio.Gui.PanSlider.PanChanged">
+            <summary>
+            True when pan value changed
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.PanSlider.Pan">
+            <summary>
+            The current Pan setting
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.Pot">
+            <summary>
+            Control that represents a potentiometer
+            TODO list:
+            Optional Log scale
+            Optional reverse scale
+            Keyboard control
+            Optional bitmap mode
+            Optional complete draw mode
+            Tooltip support
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Pot.#ctor">
+            <summary>
+            Creates a new pot control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Pot.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Draws the control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Pot.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the mouse down event to allow changing value by dragging
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Pot.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the mouse up event to allow changing value by dragging
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Pot.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the mouse down event to allow changing value by dragging
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.Pot.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.Pot.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NAudio.Gui.Pot.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:NAudio.Gui.Pot.ValueChanged">
+            <summary>
+            Value changed event
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.Pot.Minimum">
+            <summary>
+            Minimum Value of the Pot
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.Pot.Maximum">
+            <summary>
+            Maximum Value of the Pot
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.Pot.Value">
+            <summary>
+            The current value of the pot
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.TrackView.AudioClip">
+            <summary>
+            Audio Clip
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.TrackView.Clip">
+            <summary>
+            A trackview clip
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.Clip.#ctor(System.String,System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Creates a new trackview clip
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.Clip.Name">
+            <summary>
+            Clip Name
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.Clip.ForeColor">
+            <summary>
+            Foreground Colour
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.Clip.BackColor">
+            <summary>
+            Background Colour
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.Clip.StartTime">
+            <summary>
+            Start Time
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.Clip.Duration">
+            <summary>
+            Duration
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.Clip.EndTime">
+            <summary>
+            End Time
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.AudioClip.#ctor(System.String,System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Creates a new Audio Clip
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.AudioClip.SourceFileName">
+            <summary>
+            Source File Name
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.TrackView.TimeLine">
+            <summary>
+            The timeline control displays a time-grid
+            Features to add:
+            - Time vs MBFT
+            - markers, marker dragging
+            - clicking new time
+            - range selection
+            - zoom level
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TimeLine.#ctor">
+            <summary>
+            Creates a new timeline control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TimeLine.OnForeColorChanged(System.EventArgs)">
+            <summary>
+            Forecolor changed event handler
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TimeLine.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Paint event handler
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TimeLine.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Mouse down event handler
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.TrackView.TimeLine.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TimeLine.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TimeLine.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:NAudio.Gui.TrackView.TimeLine.PositionClicked">
+            <summary>
+            Position clicked event
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.TimeLine.NowTime">
+            <summary>
+            The current time
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.TimeLine.PixelsPerSecond">
+            <summary>
+            Pixels per second.
+            Effectively a zoom level
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.TrackView.TimeLinePositionClickedEventArgs">
+            <summary>
+            TimeLine Position Clicked event arguments
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TimeLinePositionClickedEventArgs.#ctor(System.TimeSpan)">
+            <summary>
+            Creates a new TimeLinePositionClickedEventArgs
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.TimeLinePositionClickedEventArgs.Position">
+            <summary>
+            The position clicked
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.TrackView.Track">
+            <summary>
+            Holds details of a track for the trackvew
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.Track.#ctor(System.String)">
+            <summary>
+            Creates a new track
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.Track.ClipAtTime(System.TimeSpan)">
+            <summary>
+            Finds the clip at a specified time
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.Track.Name">
+            <summary>
+            Track name
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.Track.Height">
+            <summary>
+            Track height
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.Track.Volume">
+            <summary>
+            Volume
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.Track.Pan">
+            <summary>
+            Pan
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.Track.Clips">
+            <summary>
+            Clips contained in this track
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.TrackView.TrackHeader">
+            <summary>
+            A track header control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TrackHeader.#ctor">
+            <summary>
+            Creates a new track header control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TrackHeader.Initialize(NAudio.Gui.TrackView.Track)">
+            <summary>
+            Associate the control with a track
+            </summary>
+            <param name="track"></param>
+        </member>
+        <member name="F:NAudio.Gui.TrackView.TrackHeader.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TrackHeader.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TrackHeader.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.TrackView.TrackView">
+            <summary>
+            TrackView is a control similar to those found in the main view of
+            DAWs, showing time in the X axis and tracks / channels in the Y
+            It is currently in the preliminary stages of development
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TrackView.#ctor">
+            <summary>
+            Create a new trackview control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TrackView.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnPaint(System.Windows.Forms.PaintEventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TrackView.OnMouseClick(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Mouse click event handler
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.TrackView.TrackView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TrackView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TrackView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:NAudio.Gui.TrackView.TrackView.RightClick">
+            <summary>
+            Right-click detected
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.TrackView.Tracks">
+            <summary>
+            The tracks displayed by this control
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.TrackView.NowTime">
+            <summary>
+            The location of the current time cursor
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.TrackView.PixelsPerSecond">
+            <summary>
+            Pixels per second.
+            Effectively a zoom level
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.TrackView.TrackViewClickEventArgs">
+            <summary>
+            Event for clicking the track view
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.TrackView.TrackViewClickEventArgs.#ctor(System.TimeSpan,NAudio.Gui.TrackView.Track,NAudio.Gui.TrackView.Clip,System.Drawing.Point)">
+            <summary>
+            Creates a new trackview clicked event
+            </summary>
+            <param name="time">Time of the cusor</param>
+            <param name="track">Track clicked on</param>
+            <param name="clip">Any clip under the cursor</param>
+            <param name="location">Mouse location</param>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.TrackViewClickEventArgs.Time">
+            <summary>
+            Time clicked on
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.TrackViewClickEventArgs.Track">
+            <summary>
+            Track clicked on
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.TrackViewClickEventArgs.Clip">
+            <summary>
+            Clip clicked on
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.TrackView.TrackViewClickEventArgs.Location">
+            <summary>
+            Mouse location
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.VolumeMeter">
+            <summary>
+            Implements a rudimentary volume meter
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.VolumeMeter.#ctor">
+            <summary>
+            Basic volume meter
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.VolumeMeter.OnForeColorChanged(System.EventArgs)">
+            <summary>
+            On Fore Color Changed
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.VolumeMeter.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Paints the volume meter
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.VolumeMeter.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.VolumeMeter.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NAudio.Gui.VolumeMeter.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.VolumeMeter.Amplitude">
+            <summary>
+            Current Value
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.VolumeMeter.MinDb">
+            <summary>
+            Minimum decibels
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.VolumeMeter.MaxDb">
+            <summary>
+            Maximum decibels
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.VolumeMeter.Orientation">
+            <summary>
+            Meter orientation
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.VolumeSlider">
+            <summary>
+            VolumeSlider control
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.VolumeSlider.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.VolumeSlider.#ctor">
+            <summary>
+            Creates a new VolumeSlider control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.VolumeSlider.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.VolumeSlider.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.VolumeSlider.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnPaint(System.Windows.Forms.PaintEventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.VolumeSlider.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnMouseMove(System.Windows.Forms.MouseEventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.VolumeSlider.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnMouseDown(System.Windows.Forms.MouseEventArgs)"/>
+            </summary>
+        </member>
+        <member name="E:NAudio.Gui.VolumeSlider.VolumeChanged">
+            <summary>
+            Volume changed event
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.VolumeSlider.Volume">
+            <summary>
+            The volume for this control
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.WaveformPainter">
+            <summary>
+            Windows Forms control for painting audio waveforms
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.WaveformPainter.#ctor">
+            <summary>
+            Constructs a new instance of the WaveFormPainter class
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.WaveformPainter.OnResize(System.EventArgs)">
+            <summary>
+            On Resize
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.WaveformPainter.OnForeColorChanged(System.EventArgs)">
+            <summary>
+            On ForeColor Changed
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:NAudio.Gui.WaveformPainter.AddMax(System.Single)">
+            <summary>
+            Add Max Value
+            </summary>
+            <param name="maxSample"></param>
+        </member>
+        <member name="M:NAudio.Gui.WaveformPainter.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            On Paint
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.WaveformPainter.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.WaveformPainter.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:NAudio.Gui.WaveformPainter.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:NAudio.Gui.WaveViewer">
+            <summary>
+            Control for viewing waveforms
+            </summary>
+        </member>
+        <member name="F:NAudio.Gui.WaveViewer.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.WaveViewer.#ctor">
+            <summary>
+            Creates a new WaveViewer control
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.WaveViewer.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.WaveViewer.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            <see cref="M:System.Windows.Forms.Control.OnPaint(System.Windows.Forms.PaintEventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:NAudio.Gui.WaveViewer.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.WaveViewer.WaveStream">
+            <summary>
+            sets the associated wavestream
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.WaveViewer.SamplesPerPixel">
+            <summary>
+            The zoom level, in samples per pixel
+            </summary>
+        </member>
+        <member name="P:NAudio.Gui.WaveViewer.StartPosition">
+            <summary>
+            Start position (currently in bytes)
+            </summary>
+        </member>
+        <member name="T:Garm.Debug.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Garm.Debug.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Garm.Debug.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Garm.Debug.Properties.Resources.NewMap">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Garm.Debug.Properties.Resources.OpenFile">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Garm.Debug.Properties.Resources.saveAsHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Garm.Debug.Properties.Resources.saveHS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>

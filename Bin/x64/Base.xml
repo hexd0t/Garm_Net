@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Base</name>
+    </assembly>
+    <members>
+        <member name="P:Garm.Base.Abstract.Base.IsApplication">
+            <summary>
+            This flag is set by the Main-Function and can be used to test if any component is run in the VS-Designer
+            </summary>
+        </member>
+        <member name="M:Garm.Base.Content.Terrain.Terrain.#ctor(System.Single,System.Single,System.Single,Garm.Base.Interfaces.IRunManager)">
+            <summary>
+            Creates a flat terrain using the given width and depth
+            </summary>
+            <param name="width">Width of the created terrain in meters</param>
+            <param name="depth">Depth of the created terrain in meters</param>
+            <param name="pointsPerMeter">Density of terrain controlpoints</param>
+            <param name="manager">The RunManager for this instance</param>
+        </member>
+        <member name="M:Garm.Base.Content.Terrain.Terrain.#ctor(System.Single,System.Single,Garm.Base.Interfaces.IRunManager)">
+            <summary>
+            Creates a flat terrain using the given width and depth and the default density
+            </summary>
+            <param name="width">Width of the created terrain in meters</param>
+            <param name="depth">Depth of the created terrain in meters</param>
+            <param name="manager">The RunManager for this instance</param>
+        </member>
+        <member name="M:Garm.Base.Content.Terrain.Terrain.GetHeightAt(System.Single,System.Single)">
+            <summary>
+            Gets the height at the specified coordinates, interpolates if neccesary
+            </summary>
+            <param name="x">X-coordinate</param>
+            <param name="z">Z-coordinate</param>
+            <returns>The height above NN</returns>
+        </member>
+        <member name="T:Garm.Base.Helper.MemoryStreamMultiplexer">
+            <summary>
+            Multithreaded buffer where one thread can write and many threads can read simultaneously. 
+            </summary>
+        </member>
+        <member name="M:Garm.Base.Interfaces.IOptionsProvider.GetStats">
+            <summary>
+            Gets the count of defined variables
+            Overridden variables count multiple times
+            </summary>
+            <returns>int[3] { Num Runtime Variables, Num User Variables, Num Default Variables }</returns>
+        </member>
+        <member name="T:Garm.Base.Enums.RunMode">
+            <summary>
+            The different RunModes
+            </summary>
+        </member>
+    </members>
+</doc>

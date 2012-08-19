@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Garm.Base.Interfaces;
@@ -74,9 +75,9 @@ namespace Debug
         {
             if(viewChanged)
                 doHeaders();
-            switch ((uint)CurrentView)
+            switch (CurrentView)
             {
-                case 0x0:
+                case View.LLThreads:
                     //LLThreads
                     var output = new StringBuilder();
                     output.AppendLine("Native Threads:");
@@ -111,6 +112,19 @@ namespace Debug
                         output.AppendLine("'");
                     }
                     label2.Text = output.ToString();
+                    break;
+                case View.LLAssemblys:
+                    var loadedAssemblys = AppDomain.CurrentDomain.GetAssemblies();
+                    output = new StringBuilder();
+                    foreach (var assembly in loadedAssemblys)
+                    {
+                        var assemblyName = assembly.GetName();
+                        output.Append(assemblyName.Name);
+                        output.Append(", ");
+                        output.AppendLine(assemblyName.Version.ToString());
+                    }
+                    label1.Text = output.ToString();
+                    label2.Text = "";
                     break;
             }
         }

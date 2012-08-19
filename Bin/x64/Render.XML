@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Render</name>
+    </assembly>
+    <members>
+        <member name="M:Garm.View.Human.Render.Frustum.Update(SlimDX.Matrix,SlimDX.Matrix)">
+            <summary>
+            Updates the frustum-planes
+            </summary>
+        </member>
+        <member name="M:Garm.View.Human.Render.Frustum.Check(SlimDX.Vector3)">
+            <summary>
+            Checks if the Point is within the frustum
+            </summary>
+            <param name="point">Point to be tested</param>
+            <returns></returns>
+        </member>
+        <member name="M:Garm.View.Human.Render.Frustum.Check(SlimDX.Vector3,System.Single)">
+            <summary>
+            Checks if the Sphere defined by its center and its radius is within the frustum
+            </summary>
+            <param name="point">Sphere's center</param>
+            <param name="radius">Sphere's radius</param>
+            <returns></returns>
+        </member>
+        <member name="M:Garm.View.Human.Render.Frustum.Check(SlimDX.Vector3[])">
+            <summary>
+            Checks if the Volume defined by the given Points is in the Frustum
+            The function also returns true in some cases where a side could possibly intersect, but does not
+            </summary>
+            <param name="points">The edges defining the Volume</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

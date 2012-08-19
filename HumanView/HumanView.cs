@@ -73,10 +73,10 @@ namespace Garm.View.Human
             Console.WriteLine("[Info] Initializing RenderManager finished");
 #endif
             //temp Terrainloading
-            var terraindef = Manager.Files.Get("%%\\maps\\default.xml");
+            /*var terraindef = Manager.Files.Get("..\\Content\\maps\\default.xml");
             var terrain = new Terrain(terraindef, Manager);
             terraindef.Dispose();
-            Render.Content.Add(new TerrainSubrender(terrain,Render, Manager));
+            Render.Content.Add(new TerrainSubrender(terrain,Render, Manager));*/
 
             Window.Show();
             Window.Focus();
