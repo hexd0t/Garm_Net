@@ -1,0 +1,6 @@
+*.pdb
+obj
+*/bin/
+*.suo
+*.user
+TestResults

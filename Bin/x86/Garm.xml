@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Garm</name>
+    </assembly>
+    <members>
+        <member name="M:Garm.Program.Main(System.String[])">
+            <summary>
+            Main entry point
+            </summary>
+            <param name="args">Commandline parameters</param>
+        </member>
+        <member name="T:Garm.RunManager">
+            <summary>
+            The RunManager parses commandline-parameters, initialises basic modules (e.g. Options) and starts the requested parts of the engine (Views, Server)
+            </summary>
+        </member>
+        <member name="M:Garm.RunManager.#ctor(System.String[])">
+            <summary>
+            Creates a new RunManager instance
+            </summary>
+            <param name="args">Commandline parameters</param>
+        </member>
+        <member name="M:Garm.RunManager.Run">
+            <summary>
+            Starts the different components of the game defined by the runMode
+            </summary>
+        </member>
+        <member name="M:Garm.RunManager.AllocConsole">
+            <summary>
+            Requests a console-window to be opened
+            </summary>
+            <returns>Success of opening the window</returns>
+        </member>
+        <member name="M:Garm.RunManager.AttachConsole(System.UInt32)">
+            <summary>
+            Attaches the calling process to the console of the specified process.
+            </summary>
+            <param name="dwProcessId">[in] Identifier of the process, usually will be ATTACH_PARENT_PROCESS</param>
+            <returns>If the function succeeds, the return value is nonzero
+            If the function fails, the return value is zero.
+            To get extended error information, call Marshal.GetLastWin32Error</returns>
+        </member>
+        <member name="M:Garm.RunManager.InstallMultiplexer">
+            <summary>
+            Creates a StreamMultiplexer and redirects Console-Output to it
+            </summary>
+        </member>
+        <member name="M:Garm.RunManager.ShowConsole">
+            <summary>
+            Shows a console window where all Debug-Messages are displayed
+            </summary>
+        </member>
+        <member name="T:Garm.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Garm.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Garm.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>
