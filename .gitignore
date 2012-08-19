@@ -3,4 +3,5 @@ obj
 */bin/
 *.suo
 *.user
+*.psess
 TestResults
