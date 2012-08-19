@@ -48,7 +48,7 @@ namespace Garm
         private readonly IOptionsProvider _opts;
         public IOptionsProvider Opts { get { return _opts; } }
         private readonly List<Base.Abstract.View> _views;
-        public IEnumerable<Base.Abstract.View> Views { get { return _views.AsReadOnly(); } }
+        public IReadOnlyList<Base.Abstract.View> Views { get { return _views.AsReadOnly(); } }
         private readonly ManualResetEvent _abortOnExit;
         public ManualResetEvent AbortOnExit { get { return _abortOnExit; } }
         private readonly FileManager _files;

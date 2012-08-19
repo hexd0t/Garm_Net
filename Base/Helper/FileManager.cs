@@ -75,6 +75,8 @@ namespace Garm.Base.Helper
         {
             Thread.CurrentThread.Priority = ThreadPriority.BelowNormal;
             Manager.WaitOnShutdown++;
+            while (Manager.Opts == null)
+                Thread.Sleep(100);
             while (Manager.DoRun)
             {
                 Manager.AbortOnExit.WaitOne(Manager.Opts.Get<int>("sys_files_cacheThreshold"));

@@ -51,13 +51,14 @@ namespace Garm.Options
             _startUpFinished = true;//At this point, readonly-settings can no longer be changed
         }
 
-        public TData Get<TData>(string key)
+        public TData Get<TData>(string key, bool AnticipatesNotFound = false)
         {
             OptionLevel src;
             var data = Get(key, out src);
             if (data == null)
             {
-                Console.WriteLine("[Error] Option '" + key + "':" + typeof(TData) + " not found!");
+                if(!AnticipatesNotFound)
+                    Console.WriteLine("[Error] Option '" + key + "':" + typeof(TData) + " not found!");
                 return default(TData);
             }
 

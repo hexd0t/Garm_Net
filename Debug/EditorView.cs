@@ -74,17 +74,12 @@ namespace Garm.Debug
             Render.Initialize();
 #if DEBUG
             Console.WriteLine("[Info] Initializing RenderManager finished");
+            Console.WriteLine("[Info] Initializing AudioManager");
 #endif
-            AudioThread = ThreadHelper.Start(delegate
-                                                 {
+            Audio = new AudioManager(Manager);
 #if DEBUG
-                                                     Console.WriteLine("[Info] Initializing AudioManager");
+            Console.WriteLine("[Info] Initializing AudioManager finished");
 #endif
-                                                     Audio = new AudioManager(Manager);
-#if DEBUG
-                                                     Console.WriteLine("[Info] Initializing AudioManager finished");
-#endif
-                                                 }, "Editor_Audio");
 
             Window.Show();
             Window.Focus();

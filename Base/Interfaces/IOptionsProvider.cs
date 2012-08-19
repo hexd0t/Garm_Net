@@ -9,7 +9,7 @@ namespace Garm.Base.Interfaces
 
     public interface IOptionsProvider : IDisposable
     {
-        TData Get<TData>(string key);
+        TData Get<TData>(string key, bool anticipatesNotFound = false);
         void Set<TData>(string key, TData value, bool runtime = true);
         ValueChangedHandler RegisterChangeNotification(string key, ValueChangedHandler handler);
         void UnregisterChangeNotification(ValueChangedHandler handler);

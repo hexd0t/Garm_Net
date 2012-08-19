@@ -21,6 +21,7 @@ namespace Garm.Audio
             MusicSynthOut = new WaveOutEvent();
             MusicSynthGen = new SynthMusicProvider(manager);
             MusicSynthOut.Init(MusicSynthGen);
+            
         }
 
         public override void Dispose()

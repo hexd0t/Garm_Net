@@ -11,7 +11,7 @@ namespace Garm.Base.Interfaces
     public interface IRunManager
     {
         IOptionsProvider Opts { get; }
-        IEnumerable<View> Views { get; }
+        IReadOnlyList<View> Views { get; }
         ICommandExecutor Commands { get; }
         ManualResetEvent AbortOnExit { get; }
         FileManager Files { get; }

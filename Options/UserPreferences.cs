@@ -81,17 +81,18 @@ namespace Garm.Options
                                 }
                                 var dict = Activator.CreateInstance(typeDict);
                                 var addmethod = typeDict.GetMethod("Add", new[]{typeA, typeB});
-                                while (!(reader.NodeType == XmlNodeType.EndElement && reader.Name == "dict" ))
-                                {
-                                    reader.Read();
-                                    if (reader.IsStartElement() && reader.Name == "row")
+                                if(!reader.IsEmptyElement)
+                                    while (!(reader.NodeType == XmlNodeType.EndElement && reader.Name == "dict" ))
                                     {
-                                        string index = reader["index"];
                                         reader.Read();
-                                        string value = reader.Value;
-                                        addmethod.Invoke(dict, new[] { Options.Parse(typeA, index), Options.Parse(typeB, value) });
+                                        if (reader.IsStartElement() && reader.Name == "row")
+                                        {
+                                            string index = reader["index"];
+                                            reader.Read();
+                                            string value = reader.Value;
+                                            addmethod.Invoke(dict, new[] { Options.Parse(typeA, index), Options.Parse(typeB, value) });
+                                        }
                                     }
-                                }
                                 typeof(Options).GetMethod("Set").MakeGenericMethod(new[] { typeDict }).Invoke(options, new[] { key, dict, false });
                             }
                             else if (reader.Name == "list")
@@ -115,17 +116,19 @@ namespace Garm.Options
                                 }
                                 var list = Activator.CreateInstance(typeList);
                                 var addmethod = typeList.GetMethod("Add", new[] { typeA });
-                                while (!(reader.NodeType == XmlNodeType.EndElement && reader.Name == "dict"))
-                                {
-                                    reader.Read();
-                                    if (reader.IsStartElement() && reader.Name == "row")
+
+                                if(!reader.IsEmptyElement)
+                                    while (!(reader.NodeType == XmlNodeType.EndElement && reader.Name == "dict"))
                                     {
-                                        string index = reader["index"];
                                         reader.Read();
-                                        string value = reader.Value;
-                                        addmethod.Invoke(list, new[] { Options.Parse(typeA, index) });
+                                        if (reader.IsStartElement() && reader.Name == "row")
+                                        {
+                                            string index = reader["index"];
+                                            reader.Read();
+                                            string value = reader.Value;
+                                            addmethod.Invoke(list, new[] { Options.Parse(typeA, index) });
+                                        }
                                     }
-                                }
                                 typeof(Options).GetMethod("Set").MakeGenericMethod(new[] { typeList }).Invoke(options, new[] { key, list, false });
                             }
                         }

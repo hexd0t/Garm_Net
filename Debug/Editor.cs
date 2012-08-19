@@ -105,9 +105,15 @@ namespace Garm.Debug
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (tabControl1.SelectedIndex == 1)
+                MusicEditUpdate();
+        }
+
+        private void MusicEditUpdate()
+        {
             if (View.Audio == null)
             {
-                Console.WriteLine("AudioManager not initialised yet!");
+                Console.WriteLine("AudioManager not initialized yet!");
                 return;
             }
             checkBox1.Checked = View.Audio.MusicSynth;
@@ -131,7 +137,7 @@ namespace Garm.Debug
                 numericUpDown13.Value = (decimal)inst.PassFactor;
                 StrengthSumDisplay.Text = (inst.FundamentalStrength + inst.Overtone1Strength + inst.Overtone2Strength + inst.Overtone3Strength + inst.Overtone4Strength).ToString();
                 checkBox2.Checked = inst.Loop;
-                if(!comboBox1.Focused)
+                if (!comboBox1.Focused)
                     comboBox1.SelectedItem = Enum.GetName(typeof(InstrumentSynth.FadeMode), inst.Fade);
                 if (!comboBox2.Focused)
                     comboBox2.SelectedItem = Enum.GetName(typeof(InstrumentSynth.FreqgenMode), inst.BaseFreqGen);
