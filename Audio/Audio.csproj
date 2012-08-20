@@ -103,7 +103,8 @@
   <ItemGroup>
     <Compile Include="AudioManager.cs" />
     <Compile Include="MusicAnalyzation\CustomMusicAnalyzer.cs" />
-    <Compile Include="InstrumentSynth.cs" />
+    <Compile Include="Synth\InstrumentSynth.cs" />
+    <Compile Include="MusicAnalyzation\CustomMusicProvider.cs" />
     <Compile Include="MusicAnalyzation\MusicCharacteristics.cs" />
     <Compile Include="NAudio\Codecs\ALawDecoder.cs" />
     <Compile Include="NAudio\Codecs\ALawEncoder.cs" />
@@ -422,8 +423,8 @@
     <Compile Include="NAudio\Wave\WaveStreams\WaveStream.cs" />
     <Compile Include="Pitches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SinWaveProvider.cs" />
-    <Compile Include="SynthMusicProvider.cs" />
+    <Compile Include="Synth\SinWaveProvider.cs" />
+    <Compile Include="Synth\SynthMusicProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Base\Base.csproj">

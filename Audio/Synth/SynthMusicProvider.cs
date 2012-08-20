@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Garm.Base.Interfaces;
 
-namespace Garm.Audio
+namespace Garm.Audio.Synth
 {
     public class SynthMusicProvider : NAudio.Wave.WaveProvider32, IDisposable
     {

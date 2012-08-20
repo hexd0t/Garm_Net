@@ -92,6 +92,8 @@
             this.RenderTarget = new Garm.Gui.WinForms.SelectablePanel();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -193,10 +195,10 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(35, 3);
+            this.panel1.Location = new System.Drawing.Point(27, 3);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.panel1.Size = new System.Drawing.Size(511, 421);
+            this.panel1.Size = new System.Drawing.Size(519, 421);
             this.panel1.TabIndex = 1;
             // 
             // groupBox1
@@ -206,7 +208,7 @@
             this.groupBox1.Location = new System.Drawing.Point(2, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.OpenedSize = new System.Drawing.Size(503, 164);
-            this.groupBox1.Size = new System.Drawing.Size(503, 164);
+            this.groupBox1.Size = new System.Drawing.Size(511, 164);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Basic Terraforming";
@@ -221,7 +223,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(3, 3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(32, 421);
+            this.toolStrip1.Size = new System.Drawing.Size(24, 421);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
@@ -233,7 +235,7 @@
             this.toolStripButton1.Image = global::Garm.Debug.Properties.Resources.NewMap;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 20);
+            this.toolStripButton1.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton1.Text = "New Map";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -243,7 +245,7 @@
             this.toolStripButton3.Image = global::Garm.Debug.Properties.Resources.saveAsHS;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(29, 20);
+            this.toolStripButton3.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton3.Text = "toolStripButton3";
             // 
             // toolStripButton4
@@ -252,7 +254,7 @@
             this.toolStripButton4.Image = global::Garm.Debug.Properties.Resources.OpenFile;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(29, 20);
+            this.toolStripButton4.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton4.Text = "toolStripButton4";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
@@ -271,6 +273,7 @@
             // 
             this.tabControl2.Controls.Add(this.tabPage3);
             this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl2.Location = new System.Drawing.Point(4, 4);
             this.tabControl2.Name = "tabControl2";
@@ -281,6 +284,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.White;
+            this.tabPage3.Controls.Add(this.checkBox3);
             this.tabPage3.Controls.Add(this.checkBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
@@ -894,6 +898,26 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(6, 31);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(120, 19);
+            this.checkBox3.TabIndex = 1;
+            this.checkBox3.Text = "MusicAnalyzation";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 24);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(533, 391);
+            this.tabPage5.TabIndex = 2;
+            this.tabPage5.Text = "Analyzation";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1008,5 +1032,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.NumericUpDown numericUpDown13;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.TabPage tabPage5;
     }
 }

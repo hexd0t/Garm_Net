@@ -374,5 +374,10 @@ namespace Garm.Debug
 
             View.Render.Content.Add(new TerrainSubrender(currentTerrain, View.Render, Manager));
         }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

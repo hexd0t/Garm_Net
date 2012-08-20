@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using NAudio.Wave;
 
-namespace Garm.Audio
+namespace Garm.Audio.Synth
 {
     public class InstrumentSynth
     {
