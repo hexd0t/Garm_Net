@@ -89,18 +89,22 @@ namespace Debug
                     case View.LLThreads:
                         label1.Visible = true;
                         label2.Visible = true;
+                        label1.Location = new Point(label1.Location.X, 7);
+                        label2.Location = new Point(label2.Location.X, 7);
                         comboBox1.Visible = false;
                         button1.Visible = false;
                         break;
                     case View.LLAssemblys:
                         label1.Visible = true;
                         label2.Visible = false;
+                        label1.Location = new Point(label1.Location.X, 7);
                         comboBox1.Visible = false;
                         button1.Visible = false;
                         break;
                     case View.OutRender:
                         label1.Visible = true;
                         label2.Visible = false;
+                        label1.Location = new Point(label1.Location.X, 41);
                         comboBox1.Visible = true;
                         button1.Visible = true;
                         comboBox1.Items.Clear();
@@ -125,6 +129,8 @@ namespace Debug
                         label1.Visible = true;
                         label2.Visible = false;
                         comboBox1.Visible = true;
+                        button1.Visible = true;
+                        label1.Location = new Point(label1.Location.X, 41);
                         break;
                 }
             }
@@ -260,7 +266,7 @@ namespace Debug
             hexaDecimalCB.Location = new Point(ClientSize.Width-hexaDecimalCB.Size.Width,0);
             categoryTabs.Size = new Size(ClientSize.Width - hexaDecimalCB.Width, 57);
             panel1.Size = new Size(ClientSize.Width, ClientSize.Height - categoryTabs.Size.Height);
-            label2.Location = new Point(Math.Max(panel1.ClientSize.Width / 2 + 4, label2.Width + 8), 41);
+            label2.Location = new Point(Math.Max(panel1.ClientSize.Width / 2 + 4, label2.Width + 8), label2.Location.Y);
         }
 
         private void lowLevelThreadsBtn_Click(object sender, EventArgs e)

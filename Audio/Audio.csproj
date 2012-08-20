@@ -102,7 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioManager.cs" />
+    <Compile Include="MusicAnalyzation\CustomMusicAnalyzer.cs" />
     <Compile Include="InstrumentSynth.cs" />
+    <Compile Include="MusicAnalyzation\MusicCharacteristics.cs" />
     <Compile Include="NAudio\Codecs\ALawDecoder.cs" />
     <Compile Include="NAudio\Codecs\ALawEncoder.cs" />
     <Compile Include="NAudio\Codecs\G722Codec.cs" />

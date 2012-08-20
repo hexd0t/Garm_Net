@@ -1,0 +1,5 @@
+Garm RTS engine uses the following software:
+ - NAudio: Licensed under the terms of the Microsoft Public License, see MSPL.txt and http://naudio.codeplex.com for more information
+ - SlimDX: Copyright (c) 2007-2011 SlimDX Group, licensed under the terms of the MIT License, see MIT.txt and http://slimdx.org for more information
+
+Garm RTS engine is Copyright (c) 2012 A. Müller and licensed under the terms of the MIT License, see MIT.txt for more information
