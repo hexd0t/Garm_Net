@@ -65,6 +65,7 @@ namespace Garm.Base.Helper
                 return memStream.GetReader();
             }
             //ToDo: Custom compressed FS here
+            //ToDo: Network FS here
 #if DEBUG
             Console.WriteLine("Warning: Could not find requested File '" + path + "'");
 #endif
