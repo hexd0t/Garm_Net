@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Garm.Debug
 {
+    /// <summary>
+    /// Provides a settingsdialog for configuring the internal benchmark
+    /// </summary>
     public partial class BruteSettingsDialog : Form
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public BruteSettingsDialog()
         {
             InitializeComponent();

@@ -129,10 +129,7 @@ namespace Garm.View.Human.Render
         public override void Dispose()
         {
             Disposed = true;
-            foreach (var notfiyHandler in NotifyHandlers)
-            {
-                Manager.Opts.UnregisterChangeNotification(notfiyHandler);
-            }
+            base.Dispose();
             DisposeTexturesRTVs();
             _composeLayout.Dispose();
             _composeVertices.Dispose();
@@ -269,7 +266,7 @@ namespace Garm.View.Human.Render
 
         protected void InitOnce()
         {
-            var shaderdeffile = Manager.Files.Get(@"Shaders\DeferredRendering.hlsl");
+            var shaderdeffile = Manager.Files.Get(@"Shaders\DeferredRendering.hlsl", false);
             var bbuffer = new byte[shaderdeffile.Length];
             shaderdeffile.Read(bbuffer,0, bbuffer.Length);
             shaderdeffile.Dispose();

@@ -4,6 +4,27 @@
         <name>Base</name>
     </assembly>
     <members>
+        <member name="F:Garm.Base.Abstract.Base.Manager">
+            <summary>
+            The current RunManager
+            </summary>
+        </member>
+        <member name="F:Garm.Base.Abstract.Base.NotifyHandlers">
+            <summary>
+            Provides a list to store all Notifyhandlers this instance has registered
+            </summary>
+        </member>
+        <member name="M:Garm.Base.Abstract.Base.#ctor(Garm.Base.Interfaces.IRunManager)">
+            <summary>
+            Baseclass for many classes, implementing common fields, e.g. to store a reference to the current RunManager
+            </summary>
+            <param name="manager">Current runmanager</param>
+        </member>
+        <member name="M:Garm.Base.Abstract.Base.Dispose">
+            <summary>
+            Releases all Resources stored in baseclass; use <code>virtual new Dispose () { base.Dispose(); /*...*/ }</code> if you need to dispose something in a derived class
+            </summary>
+        </member>
         <member name="P:Garm.Base.Abstract.Base.IsApplication">
             <summary>
             This flag is set by the Main-Function and can be used to test if any component is run in the VS-Designer
@@ -49,6 +70,16 @@
         <member name="T:Garm.Base.Enums.RunMode">
             <summary>
             The different RunModes
+            </summary>
+        </member>
+        <member name="F:Garm.Base.Enums.RunMode.Play">
+            <summary>
+            Start a normal SP/MP game
+            </summary>
+        </member>
+        <member name="F:Garm.Base.Enums.RunMode.Edit">
+            <summary>
+            
             </summary>
         </member>
     </members>

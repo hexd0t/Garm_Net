@@ -11,6 +11,7 @@ namespace Garm.Options
         {
             dict.Add("sys_runMode", new Entry<Base.Enums.RunMode>(Base.Enums.RunMode.Play));
             dict.Add("sys_files_cacheThreshold", new Entry<int>(5000));
+            dict.Add("sys_dirInfo_maxRecursionDepth", new Entry<int>(int.MaxValue));
             dict.Add("sys_files_cacheMaxRequestCount", new Entry<int>(6));//The maximum 
             dict.Add("sys_useDataSpecialFolder", new Entry<bool>(true, false, false, true));
             dict.Add("sys_dataSpecialFolder", new Entry<Environment.SpecialFolder>(Environment.SpecialFolder.MyDocuments, false, false, true));
@@ -35,6 +36,7 @@ namespace Garm.Options
             dict.Add("terrain_defaultPointsPerMeter", new Entry<float>(4,false,true,true));
 
             LoadDefaultsRender(ref dict);
+            LoadDefaultsAudio(ref dict);
             LoadDefaultsLoc(ref dict);
         }
     }

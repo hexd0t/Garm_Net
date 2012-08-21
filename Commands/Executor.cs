@@ -237,7 +237,7 @@ namespace Garm.Commands
 
         public override void Dispose()
         {
-            
+            base.Dispose();
         }
     }
 }

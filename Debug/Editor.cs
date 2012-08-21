@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Garm.Audio;
+using Garm.Audio.Synth;
 using Garm.Base.Content.Terrain;
 using Garm.Base.Interfaces;
 using Garm.View.Human.Render;

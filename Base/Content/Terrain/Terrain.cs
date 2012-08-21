@@ -82,7 +82,7 @@ namespace Garm.Base.Content.Terrain
 #endif
                                 continue;
                             }
-                            var filestream = Manager.Files.Get(file);
+                            var filestream = Manager.Files.Get(file, false);
                             heightmap.image = new Bitmap(Image.FromStream(filestream));
                             filestream.Dispose();
                             break;
@@ -184,11 +184,6 @@ namespace Garm.Base.Content.Terrain
             return new Heightmap(){image = img, minHeight = min, maxHeight = max, pointsPerMeter = PointsPerMeter};
         }
 
-        public override void Dispose()
-        {
-            
-        }
-
         /// <summary>
         /// Gets the height at the specified coordinates, interpolates if neccesary
         /// </summary>
@@ -208,6 +203,11 @@ namespace Garm.Base.Content.Terrain
         {
             public Bitmap image;
             public float minHeight, maxHeight, pointsPerMeter;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
         }
     }
 }

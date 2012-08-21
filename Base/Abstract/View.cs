@@ -12,5 +12,9 @@ namespace Garm.Base.Abstract
         { }
 
         public abstract void Run();
+        public override void Dispose()
+        {
+            base.Dispose();
+        }
     }
 }

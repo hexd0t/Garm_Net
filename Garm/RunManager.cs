@@ -73,6 +73,7 @@ namespace Garm
 #endif
             _opts = new Opts();
             _files = new FileManager(this);
+            var test = _files.GetDir("");
             _commands = new Commands.Executor(this);
             _abortOnExit = new ManualResetEvent(false);
             _notifyHandlers = new List<ValueChangedHandler>();

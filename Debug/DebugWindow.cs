@@ -46,7 +46,6 @@ namespace Debug
         public DebugWindow(IRunManager runManager)
         {
             _runManager = runManager;
-            _runManager.WaitOnShutdown++;
             _notifyHandlers = new List<ValueChangedHandler>();
             InitializeComponent();
             Text = _runManager.Opts.Get<string>("gui_windowTitle_debug");
@@ -76,7 +75,6 @@ namespace Debug
                 components.Dispose();
             }
             base.Dispose(disposing);
-            _runManager.WaitOnShutdown--;
         }
 
         private void update (bool viewChanged)

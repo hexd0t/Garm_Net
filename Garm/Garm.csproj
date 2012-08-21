@@ -167,11 +167,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <ProjectExtensions>
-    <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2012/1/1" BuildVersion_BuildVersioningStyle="None.None.None.Increment" BuildVersion_BuildAction="Build" BuildVersion_UpdateAssemblyVersion="True" />
-    </VisualStudio>
-  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

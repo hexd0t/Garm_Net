@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,11 @@ namespace Garm.Audio.MusicAnalyzation
             Manager = manager;
             //ToDo: Save and recall analyzation results
 
+            var musicPath = Manager.Opts.Get<string>("snd_ext_musicFolder");
+            if (Manager.Opts.Get<bool>("snd_ext_useSpecialFolder"))
+                musicPath = Path.Combine(Environment.GetFolderPath(Manager.Opts.Get<Environment.SpecialFolder>("snd_ext_specialFolder"))??"",musicPath);
+
+            
         }
 
         public override int Read(float[] buffer, int offset, int sampleCount)

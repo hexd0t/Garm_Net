@@ -31,8 +31,9 @@ namespace Garm.Debug
             }
         }
 
-        public override void Dispose()
+        public virtual new void Dispose()
         {
+            base.Dispose();
 #if DEBUG
             Console.WriteLine("[Info] EditorView shutting down");
 #endif

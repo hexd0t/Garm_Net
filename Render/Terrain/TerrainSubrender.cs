@@ -63,7 +63,7 @@ namespace Garm.View.Human.Render.Terrain
                 Lods = 1;
                 LodDistancesSquared = null;
             }
-            var shaderdeffile = Manager.Files.Get(@"Shaders\Terrain.hlsl");
+            var shaderdeffile = Manager.Files.Get(@"Shaders\Terrain.hlsl", false);
             var bbuffer = new byte[shaderdeffile.Length];
             shaderdeffile.Read(bbuffer, 0, bbuffer.Length);
             shaderdeffile.Dispose();
@@ -135,10 +135,7 @@ namespace Garm.View.Human.Render.Terrain
         public override void Dispose()
         {
             Disposed = true;
-            foreach (ValueChangedHandler notifyHandler in NotifyHandlers)
-            {
-                Manager.Opts.UnregisterChangeNotification(notifyHandler);
-            }
+            base.Dispose();
             foreach(Quad quad in Quads)
                 quad.Dispose();
         }

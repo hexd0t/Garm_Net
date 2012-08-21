@@ -30,11 +30,12 @@ namespace Garm.View.Human
             }
         }
 
-        public override void Dispose()
+        public virtual new void Dispose()
         {
 #if DEBUG
             Console.WriteLine("[Info] HumanView shutting down");
 #endif
+            base.Dispose();
             if(Render != null)
                 Render.Dispose();
             if (Window != null && Window.Created)
