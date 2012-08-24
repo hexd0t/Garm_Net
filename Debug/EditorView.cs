@@ -31,7 +31,7 @@ namespace Garm.Debug
             }
         }
 
-        public virtual new void Dispose()
+        public override void Dispose()
         {
             base.Dispose();
 #if DEBUG

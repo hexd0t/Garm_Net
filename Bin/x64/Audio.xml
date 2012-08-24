@@ -4,7 +4,53 @@
         <name>Audio</name>
     </assembly>
     <members>
-        <member name="M:Garm.Audio.InstrumentSynth.FreqGen(System.Double,Garm.Audio.InstrumentSynth.FreqgenMode)">
+        <member name="T:Garm.Audio.AudioManager">
+            <summary>
+            Provides all audio-related outputs to the views
+            </summary>
+        </member>
+        <member name="F:Garm.Audio.AudioManager.MusicSynthOut">
+            <summary>
+            Eventbased WaveOut for SynthMusic output
+            </summary>
+        </member>
+        <member name="F:Garm.Audio.AudioManager.MusicSynthGen">
+            <summary>
+            Provides synthesised music based on ingame situation
+            </summary>
+        </member>
+        <member name="F:Garm.Audio.AudioManager.MusicExternalOut">
+            <summary>
+            Eventbased WaveOut for AnalyzedMusic output
+            </summary>
+        </member>
+        <member name="F:Garm.Audio.AudioManager.MusicExternalProvider">
+            <summary>
+            Provides external music analyzed to fit current ingame circumstances
+            </summary>
+        </member>
+        <member name="M:Garm.Audio.AudioManager.#ctor(Garm.Base.Interfaces.IRunManager)">
+            <summary>
+            Creates the default AudioManager and starts the default outputs
+            </summary>
+            <param name="manager">The runmanager instance to use for this instance</param>
+        </member>
+        <member name="M:Garm.Audio.AudioManager.Dispose">
+            <summary>
+            Stops all audiooutput and releases all resources allocated for audio playback
+            </summary>
+        </member>
+        <member name="P:Garm.Audio.AudioManager.MusicSynth">
+            <summary>
+            En-/Disables SynthMusic output
+            </summary>
+        </member>
+        <member name="P:Garm.Audio.AudioManager.MusicExternal">
+            <summary>
+            En-/Disables AnalyzedMusic output
+            </summary>
+        </member>
+        <member name="M:Garm.Audio.Synth.InstrumentSynth.FreqGen(System.Double,Garm.Audio.Synth.InstrumentSynth.FreqgenMode)">
             <summary>
             Provides the value of a given frequencygenerator at x, scaled to a periodic length of 1
             </summary>
@@ -12,13 +58,96 @@
             <param name="mode">The frequencygenerator to use</param>
             <returns>The current value in -1...1 range</returns>
         </member>
-        <member name="M:Garm.Audio.InstrumentSynth.FadeGen(System.Double,Garm.Audio.InstrumentSynth.FadeMode)">
+        <member name="M:Garm.Audio.Synth.InstrumentSynth.FadeGen(System.Double,Garm.Audio.Synth.InstrumentSynth.FadeMode)">
             <summary>
             Provides an amplitudemultiplyer for fading
             </summary>
             <param name="x">Time-Input, scaled from 0...1 (start fade...finish)</param>
             <param name="mode">FadeMode to use</param>
             <returns>Multiplier ranging from 1...0</returns>
+        </member>
+        <member name="T:NAudio.Wave.WaveProvider32">
+            <summary>
+            Base class for creating a 32 bit floating point wave provider
+            Can also be used as a base class for an ISampleProvider that can 
+            be plugged straight into anything requiring an IWaveProvider
+            </summary>
+        </member>
+        <member name="T:NAudio.Wave.IWaveProvider">
+            <summary>
+            Generic interface for all WaveProviders.
+            </summary>
+        </member>
+        <member name="M:NAudio.Wave.IWaveProvider.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Fill the specified buffer with wave data.
+            </summary>
+            <param name="buffer">The buffer to fill of wave data.</param>
+            <param name="offset">Offset into buffer</param>
+            <param name="count">The number of bytes to read</param>
+            <returns>the number of bytes written to the buffer.</returns>
+        </member>
+        <member name="P:NAudio.Wave.IWaveProvider.WaveFormat">
+            <summary>
+            Gets the WaveFormat of this WaveProvider.
+            </summary>
+            <value>The wave format.</value>
+        </member>
+        <member name="T:NAudio.Wave.ISampleProvider">
+            <summary>
+            Like IWaveProvider, but makes it much simpler to put together a 32 bit floating
+            point mixing engine
+            </summary>
+        </member>
+        <member name="M:NAudio.Wave.ISampleProvider.Read(System.Single[],System.Int32,System.Int32)">
+            <summary>
+            Fill the specified buffer with 32 bit floating point samples
+            </summary>
+            <param name="buffer">The buffer to fill with samples.</param>
+            <param name="offset">Offset into buffer</param>
+            <param name="count">The number of samples to read</param>
+            <returns>the number of samples written to the buffer.</returns>
+        </member>
+        <member name="P:NAudio.Wave.ISampleProvider.WaveFormat">
+            <summary>
+            Gets the WaveFormat of this Sample Provider.
+            </summary>
+            <value>The wave format.</value>
+        </member>
+        <member name="M:NAudio.Wave.WaveProvider32.#ctor">
+            <summary>
+            Initializes a new instance of the WaveProvider32 class 
+            defaulting to 44.1kHz mono
+            </summary>
+        </member>
+        <member name="M:NAudio.Wave.WaveProvider32.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the WaveProvider32 class with the specified
+            sample rate and number of channels
+            </summary>
+        </member>
+        <member name="M:NAudio.Wave.WaveProvider32.SetWaveFormat(System.Int32,System.Int32)">
+            <summary>
+            Allows you to specify the sample rate and channels for this WaveProvider
+            (should be initialised before you pass it to a wave player)
+            </summary>
+        </member>
+        <member name="M:NAudio.Wave.WaveProvider32.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Implements the Read method of IWaveProvider by delegating to the abstract
+            Read method taking a float array
+            </summary>
+        </member>
+        <member name="M:NAudio.Wave.WaveProvider32.Read(System.Single[],System.Int32,System.Int32)">
+            <summary>
+            Method to override in derived classes
+            Supply the requested number of samples into the buffer
+            </summary>
+        </member>
+        <member name="P:NAudio.Wave.WaveProvider32.WaveFormat">
+            <summary>
+            The Wave Format
+            </summary>
         </member>
         <member name="T:NAudio.Codecs.ALawDecoder">
             <summary>
@@ -8575,27 +8704,6 @@
             Sample Provider to allow fading in and out
             </summary>
         </member>
-        <member name="T:NAudio.Wave.ISampleProvider">
-            <summary>
-            Like IWaveProvider, but makes it much simpler to put together a 32 bit floating
-            point mixing engine
-            </summary>
-        </member>
-        <member name="M:NAudio.Wave.ISampleProvider.Read(System.Single[],System.Int32,System.Int32)">
-            <summary>
-            Fill the specified buffer with 32 bit floating point samples
-            </summary>
-            <param name="buffer">The buffer to fill with samples.</param>
-            <param name="offset">Offset into buffer</param>
-            <param name="count">The number of samples to read</param>
-            <returns>the number of samples written to the buffer.</returns>
-        </member>
-        <member name="P:NAudio.Wave.ISampleProvider.WaveFormat">
-            <summary>
-            Gets the WaveFormat of this Sample Provider.
-            </summary>
-            <value>The wave format.</value>
-        </member>
         <member name="M:NAudio.Wave.SampleProviders.FadeInOutSampleProvider.#ctor(NAudio.Wave.ISampleProvider,System.Boolean)">
             <summary>
             Creates a new FadeInOutSampleProvider
@@ -9133,26 +9241,6 @@
             Helper class for when you need to convert back to an IWaveProvider from
             an ISampleProvider. Keeps it as IEEE float
             </summary>
-        </member>
-        <member name="T:NAudio.Wave.IWaveProvider">
-            <summary>
-            Generic interface for all WaveProviders.
-            </summary>
-        </member>
-        <member name="M:NAudio.Wave.IWaveProvider.Read(System.Byte[],System.Int32,System.Int32)">
-            <summary>
-            Fill the specified buffer with wave data.
-            </summary>
-            <param name="buffer">The buffer to fill of wave data.</param>
-            <param name="offset">Offset into buffer</param>
-            <param name="count">The number of bytes to read</param>
-            <returns>the number of bytes written to the buffer.</returns>
-        </member>
-        <member name="P:NAudio.Wave.IWaveProvider.WaveFormat">
-            <summary>
-            Gets the WaveFormat of this WaveProvider.
-            </summary>
-            <value>The wave format.</value>
         </member>
         <member name="M:NAudio.Wave.SampleProviders.SampleToWaveProvider.#ctor(NAudio.Wave.ISampleProvider)">
             <summary>
@@ -11886,48 +11974,6 @@
             </summary>
         </member>
         <member name="P:NAudio.Wave.WaveProvider16.WaveFormat">
-            <summary>
-            The Wave Format
-            </summary>
-        </member>
-        <member name="T:NAudio.Wave.WaveProvider32">
-            <summary>
-            Base class for creating a 32 bit floating point wave provider
-            Can also be used as a base class for an ISampleProvider that can 
-            be plugged straight into anything requiring an IWaveProvider
-            </summary>
-        </member>
-        <member name="M:NAudio.Wave.WaveProvider32.#ctor">
-            <summary>
-            Initializes a new instance of the WaveProvider32 class 
-            defaulting to 44.1kHz mono
-            </summary>
-        </member>
-        <member name="M:NAudio.Wave.WaveProvider32.#ctor(System.Int32,System.Int32)">
-            <summary>
-            Initializes a new instance of the WaveProvider32 class with the specified
-            sample rate and number of channels
-            </summary>
-        </member>
-        <member name="M:NAudio.Wave.WaveProvider32.SetWaveFormat(System.Int32,System.Int32)">
-            <summary>
-            Allows you to specify the sample rate and channels for this WaveProvider
-            (should be initialised before you pass it to a wave player)
-            </summary>
-        </member>
-        <member name="M:NAudio.Wave.WaveProvider32.Read(System.Byte[],System.Int32,System.Int32)">
-            <summary>
-            Implements the Read method of IWaveProvider by delegating to the abstract
-            Read method taking a float array
-            </summary>
-        </member>
-        <member name="M:NAudio.Wave.WaveProvider32.Read(System.Single[],System.Int32,System.Int32)">
-            <summary>
-            Method to override in derived classes
-            Supply the requested number of samples into the buffer
-            </summary>
-        </member>
-        <member name="P:NAudio.Wave.WaveProvider32.WaveFormat">
             <summary>
             The Wave Format
             </summary>

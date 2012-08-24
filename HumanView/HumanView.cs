@@ -14,7 +14,7 @@ namespace Garm.View.Human
 {
     public class HumanView : Base.Abstract.View
     {
-        protected RenderManager Render;
+        public RenderManager Render;
         protected RenderForm Window;
         protected Thread MainThread;
         protected AutoResetEvent StartSync;
@@ -30,19 +30,19 @@ namespace Garm.View.Human
             }
         }
 
-        public virtual new void Dispose()
+        public override void Dispose()
         {
 #if DEBUG
             Console.WriteLine("[Info] HumanView shutting down");
 #endif
             base.Dispose();
-            if(Render != null)
-                Render.Dispose();
             if (Window != null && Window.Created)
             {
                 Window.Invoke((Action)Window.Close);
                 Window.Dispose();
             }
+            if(Render != null)
+                Render.Dispose();
         }
 
         public override void Run()

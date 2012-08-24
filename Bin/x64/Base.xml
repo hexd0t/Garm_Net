@@ -4,6 +4,32 @@
         <name>Base</name>
     </assembly>
     <members>
+        <member name="T:Garm.Base.Abstract.Base">
+            <summary>
+            Baseclass for many classes, implementing common fields, e.g. to store a reference to the current RunManager
+            </summary>
+        </member>
+        <member name="F:Garm.Base.Abstract.Base.Manager">
+            <summary>
+            The current RunManager
+            </summary>
+        </member>
+        <member name="F:Garm.Base.Abstract.Base.NotifyHandlers">
+            <summary>
+            Provides a list to store all Notifyhandlers this instance has registered
+            </summary>
+        </member>
+        <member name="M:Garm.Base.Abstract.Base.#ctor(Garm.Base.Interfaces.IRunManager)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="manager">Current runmanager</param>
+        </member>
+        <member name="M:Garm.Base.Abstract.Base.Dispose">
+            <summary>
+            Releases all Resources stored in baseclass; use <code>virtual new Dispose () { base.Dispose(); /*...*/ }</code> if you need to dispose something in a derived class
+            </summary>
+        </member>
         <member name="P:Garm.Base.Abstract.Base.IsApplication">
             <summary>
             This flag is set by the Main-Function and can be used to test if any component is run in the VS-Designer
@@ -34,6 +60,26 @@
             <param name="z">Z-coordinate</param>
             <returns>The height above NN</returns>
         </member>
+        <member name="T:Garm.Base.Helper.CaseinsensitiveEqualityComparer">
+            <summary>
+            Provides an <code>IEqualityComparer&lt;string&gt;</code> ignoring case
+            </summary>
+        </member>
+        <member name="M:Garm.Base.Helper.CaseinsensitiveEqualityComparer.Equals(System.String,System.String)">
+            <summary>
+            Caseinsensitively tests two strings for equality
+            </summary>
+            <param name="x">First string</param>
+            <param name="y">Second string</param>
+            <returns>True if both strings are equal, else false</returns>
+        </member>
+        <member name="M:Garm.Base.Helper.CaseinsensitiveEqualityComparer.GetHashCode(System.String)">
+            <summary>
+            Gets a caseinsensitive Hashcode by returning the HashCode of the all-lowered string
+            </summary>
+            <param name="obj">The string to generate the HashCode from</param>
+            <returns>The caseinsensitive HashCode</returns>
+        </member>
         <member name="T:Garm.Base.Helper.MemoryStreamMultiplexer">
             <summary>
             Multithreaded buffer where one thread can write and many threads can read simultaneously. 
@@ -49,6 +95,36 @@
         <member name="T:Garm.Base.Enums.RunMode">
             <summary>
             The different RunModes
+            </summary>
+        </member>
+        <member name="F:Garm.Base.Enums.RunMode.Play">
+            <summary>
+            Start a normal SP/MP game
+            </summary>
+        </member>
+        <member name="F:Garm.Base.Enums.RunMode.Edit">
+            <summary>
+            Starts the game editor for creating/importing ingame content, either locally or on a collabserver
+            </summary>
+        </member>
+        <member name="F:Garm.Base.Enums.RunMode.GameServer">
+            <summary>
+            Starts a dedicated MP gameserver
+            </summary>
+        </member>
+        <member name="F:Garm.Base.Enums.RunMode.CollabServer">
+            <summary>
+            Starts a dedicated collabserver for collaboratively creating ingame content
+            </summary>
+        </member>
+        <member name="F:Garm.Base.Enums.RunMode.ServerPlay">
+            <summary>
+            Starts both a MP game and a MP gameserver and connects the game to the local gameserver
+            </summary>
+        </member>
+        <member name="F:Garm.Base.Enums.RunMode.AIOServer">
+            <summary>
+            Starts both a game- and a collabserver
             </summary>
         </member>
     </members>

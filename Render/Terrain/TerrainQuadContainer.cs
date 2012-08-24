@@ -15,10 +15,12 @@ namespace Garm.View.Human.Render.Terrain
 
         public QuadContainer(int startX, int endX, int startZ, int endZ, ref Quad[] quads, int quadCountZ)
         {
-            int quadsX = endX - startX; //+1, but since every following calculation would do -1 left away
+            int quadsX = endX - startX;
             int quadsZ = endZ - startZ;
-            bool singleX = quadsX == 1;
-            bool singleZ = quadsZ == 1;
+            bool singleX = quadsX == 0;
+            bool singleZ = quadsZ == 0;
+            int quadsXhalf = quadsX / 2;
+            int quadsZhalf = quadsZ / 2;
             if(singleX && singleZ)
             {
                 ContainedQuad = startX * quadCountZ + startZ;
@@ -31,8 +33,8 @@ namespace Garm.View.Human.Render.Terrain
                 // -------------
                 SubContainer = new List<QuadContainer>(2)
                                    {
-                                       new QuadContainer(startX, startX + quadsX/2, startZ, endZ, ref quads, quadCountZ),
-                                       new QuadContainer(startX + quadsX/2, endX, startZ, endZ, ref quads, quadCountZ)
+                                       new QuadContainer(startX, startX + quadsXhalf, startZ, endZ, ref quads, quadCountZ),
+                                       new QuadContainer(startX + quadsXhalf + 1, endX, startZ, endZ, ref quads, quadCountZ)
                                    };
                 Bounds = GetContainingBounds(SubContainer.Select(quad => quad.Bounds));
                 
@@ -47,8 +49,8 @@ namespace Garm.View.Human.Render.Terrain
 
                 SubContainer = new List<QuadContainer>(2)
                                    {
-                                       new QuadContainer(startX, endX, startZ, startZ + quadsZ/2, ref quads, quadCountZ),
-                                       new QuadContainer(startX, endX, startZ + quadsZ/2, endZ, ref quads, quadCountZ)
+                                       new QuadContainer(startX, endX, startZ, startZ + quadsZhalf, ref quads, quadCountZ),
+                                       new QuadContainer(startX, endX, startZ + quadsZhalf + 1, endZ, ref quads, quadCountZ)
                                    };
                 Bounds = GetContainingBounds(SubContainer.Select(quad => quad.Bounds));
             }
@@ -61,33 +63,33 @@ namespace Garm.View.Human.Render.Terrain
                 // ---------
                 SubContainer = new List<QuadContainer>(4)
                                    {
-                                       new QuadContainer(startX, startX + quadsX/2, startZ, startZ + quadsZ/2, ref quads, quadCountZ),
-                                       new QuadContainer(startX + quadsX/2, endX, startZ, startZ + quadsZ/2, ref quads, quadCountZ),
-                                       new QuadContainer(startX, startX + quadsX/2, startZ + quadsZ/2, endZ, ref quads, quadCountZ),
-                                       new QuadContainer(startX + quadsX/2, endX, startZ + quadsZ/2, endZ, ref quads, quadCountZ)
+                                       new QuadContainer(startX, startX + quadsXhalf, startZ, startZ + quadsZhalf, ref quads, quadCountZ),
+                                       new QuadContainer(startX + quadsXhalf + 1, endX, startZ, startZ + quadsZhalf, ref quads, quadCountZ),
+                                       new QuadContainer(startX, startX + quadsXhalf, startZ + quadsZhalf + 1, endZ, ref quads, quadCountZ),
+                                       new QuadContainer(startX + quadsXhalf + 1, endX, startZ + quadsZhalf + 1, endZ, ref quads, quadCountZ)
                                    };
                 Bounds = GetContainingBounds(SubContainer.Select(quad => quad.Bounds));
             }
             BoundingBox = CreateBoundingBox(Bounds);
         }
 
-        protected Quad.QuadBounds GetContainingBounds(IEnumerable<Quad.QuadBounds> contained)
+        protected static Quad.QuadBounds GetContainingBounds(IEnumerable<Quad.QuadBounds> contained)
         {
             Quad.QuadBounds bounds = contained.FirstOrDefault();
-            foreach (var containedBounds in contained.Skip(1))
+            foreach (var containedBounds in contained)
             {
-                if (containedBounds.MaxX > Bounds.MaxX)
-                    Bounds.MaxX = containedBounds.MaxX;
-                if (containedBounds.MaxY > Bounds.MaxY)
-                    Bounds.MaxY = containedBounds.MaxY;
-                if (containedBounds.MaxZ > Bounds.MaxZ)
-                    Bounds.MaxZ = containedBounds.MaxZ;
-                if (containedBounds.MinX < Bounds.MinX)
-                    Bounds.MinX = containedBounds.MinX;
-                if (containedBounds.MinY < Bounds.MinY)
-                    Bounds.MinY = containedBounds.MinY;
-                if (containedBounds.MinZ < Bounds.MinZ)
-                    Bounds.MinZ = containedBounds.MinZ;
+                if (containedBounds.MaxX > bounds.MaxX)
+                    bounds.MaxX = containedBounds.MaxX;
+                if (containedBounds.MaxY > bounds.MaxY)
+                    bounds.MaxY = containedBounds.MaxY;
+                if (containedBounds.MaxZ > bounds.MaxZ)
+                    bounds.MaxZ = containedBounds.MaxZ;
+                if (containedBounds.MinX < bounds.MinX)
+                    bounds.MinX = containedBounds.MinX;
+                if (containedBounds.MinY < bounds.MinY)
+                    bounds.MinY = containedBounds.MinY;
+                if (containedBounds.MinZ < bounds.MinZ)
+                    bounds.MinZ = containedBounds.MinZ;
             }
             return bounds;
         }
@@ -114,7 +116,6 @@ namespace Garm.View.Human.Render.Terrain
                 if (SubContainer == null)
                     return new List<int> { ContainedQuad };
                 return SubContainer.SelectMany(container => container.GetQuadsInFrustum(frustum)).Where(quadId => quadId != -1);
-
             }
             return new List<int> { -1 };
         }

@@ -202,8 +202,7 @@ namespace Garm.Base.Helper
 
         public override void Dispose()
         {
-            foreach (var valueChangedHandler in NotifyHandlers)
-                Manager.Opts.UnregisterChangeNotification(valueChangedHandler);
+            base.Dispose();
             if(CleanUpThread.ThreadState != ThreadState.Stopped && 
                 CleanUpThread.ThreadState != ThreadState.Unstarted)
                 CleanUpThread.Abort();

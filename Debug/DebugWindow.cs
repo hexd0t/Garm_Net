@@ -218,7 +218,34 @@ namespace Debug
                     else if(statsource is Garm.View.Human.Render.Terrain.TerrainSubrender)
                     {
                         var terrain = (Garm.View.Human.Render.Terrain.TerrainSubrender)statsource;
-                        
+                        var terraintype = typeof(Garm.View.Human.Render.Terrain.TerrainSubrender);
+                        var lodsMember = terraintype.GetField("QuadLods", BindingFlags.Instance | BindingFlags.NonPublic);
+                        var quadsZMember = terraintype.GetField("QuadCountZ", BindingFlags.Instance | BindingFlags.NonPublic);
+                        if(lodsMember == null || lodsMember.FieldType != typeof(int[])
+                            || quadsZMember == null || quadsZMember.FieldType != typeof(int))
+                        {
+                            Console.WriteLine("[Warning] TerrainSubrender with no QuadLods available");
+                            break;
+                        }
+                        int[] lods = (int[]) lodsMember.GetValue(terrain);
+                        int quadsZ = (int)quadsZMember.GetValue(terrain);
+                        output.AppendLine("Current Lods(+X⇓, +Z⇒)");
+                        for(int i = 0; i < lods.Length; i += quadsZ)
+                        {
+                            for (int j = 0; j < quadsZ; j++)
+                            {
+                                var lod = lods[i + j];
+                                if (lod == int.MaxValue)
+                                    output.Append("-- ");
+                                else
+                                {
+                                    output.Append(lod.ToString("D2"));
+                                    output.Append(" ");
+                                }
+                            }
+                            output.AppendLine();
+                        }
+
                     }
                     label1.Text = output.ToString();
                     break;

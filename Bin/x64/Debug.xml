@@ -4,6 +4,16 @@
         <name>Debug</name>
     </assembly>
     <members>
+        <member name="T:Garm.Debug.BruteSettingsDialog">
+            <summary>
+            Provides a settingsdialog for configuring the internal benchmark
+            </summary>
+        </member>
+        <member name="M:Garm.Debug.BruteSettingsDialog.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
         <member name="F:Garm.Debug.BruteSettingsDialog.components">
             <summary>
             Required designer variable.
@@ -19,6 +29,37 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Garm.Debug.CollabServerView">
+            <summary>
+            Provides the CollabServer functionality
+            </summary>
+        </member>
+        <member name="F:Garm.Debug.CollabServerView.MainThread">
+            <summary>
+            Main workthread
+            </summary>
+        </member>
+        <member name="M:Garm.Debug.CollabServerView.#ctor(Garm.Base.Interfaces.IRunManager)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="manager">The RunManager instance to be used</param>
+        </member>
+        <member name="M:Garm.Debug.CollabServerView.Run">
+            <summary>
+            Starts serving edit-clients
+            </summary>
+        </member>
+        <member name="M:Garm.Debug.CollabServerView.Serve">
+            <summary>
+            Main workloop for serving clients
+            </summary>
+        </member>
+        <member name="M:Garm.Debug.CollabServerView.Dispose">
+            <summary>
+            Disconnects from all clients and releases any allocated resources
             </summary>
         </member>
         <member name="T:Debug.DebugWindow">

@@ -216,28 +216,28 @@ namespace Garm.View.Human.Render.Terrain
                 if (lod != 0)//Stitching detection follows; LOD 0 never stitches
                 {
                     //Check top neighbor
-                    if (i % CurrentTerrain.PointsZ > 0 && QuadLods[i - 1] < lod)
+                    if (i % QuadCountZ > 0 && QuadLods[i - 1] < lod)
                     {
                         borderids[0].Border += 0x10;
                         borderids[0].Highword = QuadLods[i - 1];
                     }
                     //Check bot neighbor
-                    if (i % CurrentTerrain.PointsZ < CurrentTerrain.PointsZ - 1 && QuadLods[i + 1] < lod)
+                    if (i % QuadCountZ < QuadCountZ - 1 && QuadLods[i + 1] < lod)
                     {
                         borderids[1].Border += 0x10;
                         borderids[1].Highword = QuadLods[i + 1];
                     }
                     //Check left neighbor
-                    if (i >= CurrentTerrain.PointsZ && QuadLods[i - CurrentTerrain.PointsZ] < lod)
+                    if (i >= QuadCountZ && QuadLods[i - QuadCountZ] < lod)
                     {
                         borderids[2].Border += 0x10;
-                        borderids[2].Highword = QuadLods[i - CurrentTerrain.PointsZ];
+                        borderids[2].Highword = QuadLods[i - QuadCountZ];
                     }
                     //Check right neighbor
-                    if (i + CurrentTerrain.PointsZ < Quads.Length && QuadLods[i + CurrentTerrain.PointsZ] < lod)
+                    if (i + QuadCountZ < Quads.Length && QuadLods[i + QuadCountZ] < lod)
                     {
                         borderids[3].Border += 0x10;
-                        borderids[3].Highword = QuadLods[i + CurrentTerrain.PointsZ];
+                        borderids[3].Highword = QuadLods[i + QuadCountZ];
                     }
                 }
                 for(int j = 0; j < /*4*/1; j++)
