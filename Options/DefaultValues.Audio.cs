@@ -11,7 +11,7 @@ namespace Garm.Options
         {
             dict.Add("snd_musicProvider", new Entry<short>(0));
             dict.Add("snd_ext_musicFolder", new Entry<string>(""));
-            dict.Add("snd_ext_useSpecialFolder", new Entry<bool>(true));
+            dict.Add("snd_ext_useSpecialFolder", new Entry<bool>(false));
             dict.Add("snd_ext_specialFolder", new Entry<Environment.SpecialFolder>(Environment.SpecialFolder.MyMusic));
         }
     }

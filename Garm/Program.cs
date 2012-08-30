@@ -24,6 +24,7 @@ namespace Garm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
             Base.Abstract.Base.IsApplication = true;
+
             if (args.Length > 0 && args[0] == "brutesettings")
             {
                 //ToDo: Implement optimal settings benchmark

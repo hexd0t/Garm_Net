@@ -97,26 +97,28 @@ namespace Garm.Base.Helper
             if(source.HasFlag(FileSource.LocalUserData) && !Path.IsPathRooted(path))
             {
                 string userdatapath = Path.Combine(DataFolder, path);
-                if (Directory.Exists(userdatapath) && remainingdepth > 0)
+                if (Directory.Exists(userdatapath))
                 {
-                    foreach (string directory in Directory.GetDirectories(userdatapath))
-                    {
-                        var dirinfo = GetDir(directory, FileSource.Local, remainingdepth - 1); //Iterate as local since it's now a complete Path
-                        result.Subdirectories.Add(dirinfo);
-                    }
+                    if (remainingdepth > 0)
+                        foreach (string directory in Directory.GetDirectories(userdatapath))
+                        {
+                            var dirinfo = GetDir(directory, FileSource.Local, remainingdepth - 1); //Iterate as local since it's now a complete Path
+                            result.Subdirectories.Add(dirinfo);
+                        }
+                    result.Files.AddRange(Directory.GetFiles(userdatapath).Select(Path.GetFileName));
                 }
-                result.Files.AddRange(Directory.GetFiles(userdatapath).Select(Path.GetFileName));
             }
 
             if (source.HasFlag(FileSource.Local))
             {
                 string localpath = Path.IsPathRooted(path) ? path : Path.Combine(Environment.CurrentDirectory, path);
-                if (Directory.Exists(localpath) && remainingdepth > 0)
+                if (Directory.Exists(localpath))
                 {
-                    foreach (string directory in Directory.GetDirectories(localpath))
-                        result.Subdirectories.Add(GetDir(directory, FileSource.Local, remainingdepth - 1));
+                    if (remainingdepth > 0)
+                        foreach (string directory in Directory.GetDirectories(localpath))
+                            result.Subdirectories.Add(GetDir(directory, FileSource.Local, remainingdepth - 1));
+                    result.Files.AddRange(Directory.GetFiles(localpath).Select(Path.GetFileName));
                 }
-                result.Files.AddRange(Directory.GetFiles(localpath).Select(Path.GetFileName));
             }
 
             //ToDo: Iterate on compressed FS and network FS
