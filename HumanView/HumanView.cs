@@ -8,6 +8,7 @@ using Garm.Base.Helper;
 using Garm.Base.Interfaces;
 using Garm.View.Human.Render;
 using Garm.View.Human.Render.Terrain;
+using Garm.View.Human.Render.Menu;
 using SlimDX.Windows;
 
 namespace Garm.View.Human
@@ -18,6 +19,8 @@ namespace Garm.View.Human
         protected RenderForm Window;
         protected Thread MainThread;
         protected AutoResetEvent StartSync;
+
+        protected MainMenuSubrender MainMenu;
 
         public HumanView(IRunManager manager) : base(manager)
         {
@@ -78,6 +81,9 @@ namespace Garm.View.Human
             var terrain = new Terrain(terraindef, Manager);
             terraindef.Dispose();
             Render.Content.Add(new TerrainSubrender(terrain,Render, Manager));*/
+
+            MainMenu = new MainMenuSubrender(Render, Manager);
+            Render.Content.Add(MainMenu);
 
             Window.Show();
             Window.Focus();

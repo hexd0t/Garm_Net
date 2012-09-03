@@ -279,13 +279,13 @@ namespace Garm.View.Human.Render
             _composePass = _composeTechnique.GetPassByIndex(0);
             
             var vertices = new DataStream(20 * 4, true, true);
-            vertices.Write(new Vector3(-1f, -1f, 1f));
+            vertices.Write(new Vector3(-1f, -1f, -1f));
             vertices.Write(new Vector2(0f,1f));
-            vertices.Write(new Vector3(-1f, 1f, 1f));
+            vertices.Write(new Vector3(-1f, 1f, -1f));
             vertices.Write(new Vector2(0f, 0f));
-            vertices.Write(new Vector3(1f, -1f, 1f));
+            vertices.Write(new Vector3(1f, -1f, -1f));
             vertices.Write(new Vector2(1f, 1f));
-            vertices.Write(new Vector3(1f, 1f, 1f));
+            vertices.Write(new Vector3(1f, 1f, -1f));
             vertices.Write(new Vector2(1f, 0f));
             vertices.Position = 0;
             _composeVertices = new Buffer(D3DDevice, vertices, 20 * 4, ResourceUsage.Default, BindFlags.VertexBuffer, CpuAccessFlags.None, ResourceOptionFlags.None, 0);

@@ -32,5 +32,10 @@
             <param name="points">The edges defining the Volume</param>
             <returns></returns>
         </member>
+        <member name="T:Garm.View.Human.Render.Menu.MainMenuSubrender">
+            <summary>
+            Provides menu-rendering functionality
+            </summary>
+        </member>
     </members>
 </doc>

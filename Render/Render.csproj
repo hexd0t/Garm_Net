@@ -107,6 +107,7 @@
     <Compile Include="FreeflightCam.cs" />
     <Compile Include="Frustum.cs" />
     <Compile Include="IRenderable.cs" />
+    <Compile Include="Menu\MainMenuSubrender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderablesList.cs" />
     <Compile Include="RenderManager.cs" />
@@ -126,6 +127,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Shaders\Terrain.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\Menu.hlsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
