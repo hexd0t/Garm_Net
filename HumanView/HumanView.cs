@@ -18,19 +18,12 @@ namespace Garm.View.Human
         public RenderManager Render;
         protected RenderForm Window;
         protected Thread MainThread;
-        protected AutoResetEvent StartSync;
 
         protected MainMenuSubrender MainMenu;
 
         public HumanView(IRunManager manager) : base(manager)
         {
-            StartSync = new AutoResetEvent(false);
-            MainThread = ThreadHelper.Start(StartProcedure, "Human_View");
-            if (!StartSync.WaitOne(Manager.Opts.Get<int>("sys_initTimeout")))
-            {
-                Console.WriteLine("[Error] Renderer-init timed out");
-                MainThread.Abort();
-            }
+
         }
 
         public override void Dispose()
@@ -50,7 +43,7 @@ namespace Garm.View.Human
 
         public override void Run()
         {
-            StartSync.Set();
+            MainThread = ThreadHelper.Start(StartProcedure, "Human_View");
         }
 
         protected void StartProcedure()
@@ -60,15 +53,8 @@ namespace Garm.View.Human
             NotifyHandlers.Add(Manager.Opts.RegisterChangeNotification("gui_windowTitle_client",
                         (key, value) => Window.BeginInvoke((Action)delegate { Window.Text = (string)value; })));
             Render = new RenderManager(Manager, Window);
-            StartSync.Set();
             Thread.Sleep(50);
 
-            while(!StartSync.WaitOne(1000) && Manager.DoRun)
-            {
-#if DEBUG
-                Console.WriteLine("[Info] HumanView waiting for go");
-#endif
-            }
 #if DEBUG
             Console.WriteLine("[Info] Initializing RenderManager");
 #endif

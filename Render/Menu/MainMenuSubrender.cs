@@ -32,13 +32,13 @@ namespace Garm.View.Human.Render.Menu
             Renderer = renderer;
 
             var vertices = new DataStream(20 * 4, true, true);
-            vertices.Write(new Vector3(-1f, -1f, 1f));
+            vertices.Write(new Vector3(-1f, -1f, -1f));
             vertices.Write(new Vector2(0f, 1f));
-            vertices.Write(new Vector3(-1f, 1f, 1f));
+            vertices.Write(new Vector3(-1f, 1f, -1f));
             vertices.Write(new Vector2(0f, 0f));
-            vertices.Write(new Vector3(1f, -1f, 1f));
+            vertices.Write(new Vector3(1f, -1f, -1f));
             vertices.Write(new Vector2(1f, 1f));
-            vertices.Write(new Vector3(1f, 1f, 1f));
+            vertices.Write(new Vector3(1f, 1f, -1f));
             vertices.Write(new Vector2(1f, 0f));
             vertices.Position = 0;
             FullscreenQuad_Buffer = new Buffer(Renderer.D3DDevice, vertices, 20 * 4, ResourceUsage.Default, BindFlags.VertexBuffer, CpuAccessFlags.None, ResourceOptionFlags.None, 0);
@@ -70,9 +70,9 @@ namespace Garm.View.Human.Render.Menu
 
         public void UpdateStaticVars()
         {
-            MenuEffect.GetVariableByName("screenSize").AsScalar().Set(
-                new float[] { (float)Renderer.Output.ClientSize.Width,
-                    (float)Renderer.Output.ClientSize.Height});
+            MenuEffect.GetVariableByName("screenSize").AsVector().Set( new Vector2(
+                Renderer.Output.ClientSize.Width,
+                Renderer.Output.ClientSize.Height));
         }
 
         public void RenderTransparent()

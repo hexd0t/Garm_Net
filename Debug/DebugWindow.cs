@@ -111,7 +111,10 @@ namespace Debug
                             var renderMember = _runManager.Views[i].GetType().GetField("Render");
                             if (renderMember == null)
                                 continue;
-                            var render = renderMember.GetValue(_runManager.Views[i]) as RenderManager;
+                            var renderObj = renderMember.GetValue(_runManager.Views[i]);
+                            if(renderObj == null)
+                                continue; //Renderer not initialized yet
+                            var render = renderObj as RenderManager;
                             if (render == null)
 #if DEBUG
                                 throw new Exception("View-Class '"+_runManager.Views[i].GetType().Name+"' contains a Field Render which is not a RenderManager!");

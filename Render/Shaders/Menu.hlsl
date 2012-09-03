@@ -26,12 +26,12 @@ PShaderIn VShader(VShaderIn inp)
 float4 PShader(PShaderIn inp) : SV_TARGET
 {
 	float4 result;
-	bool isA = (inp.tex.X % 30) < 5;
-	bool isB = ((inp.tex.X * inp.tex.Y * 0,866f)%30) < 5;
+	bool isA = (inp.tex.x % 40) < 5;
+	bool isB = ((0.866f * (inp.tex.y - (inp.tex.x * 0.577f)))%40) < 5;
 	if(isA && !isB)
 		result = float4(1,0,0,1);
 	else if(isB /*&& !isC*/)
-		result = float(0,1,0,1);
+		result = float4(0.0f,1.0f,0.0f,1.0f);
 	else
 		result = float4(0.3f, 0.3f, 0.3f,1.0f);
 
