@@ -29,7 +29,8 @@ namespace Garm.Base.Helper
                     Manager.Opts.Get<bool>("sys_useDataSpecialFolder") ? Environment.GetFolderPath(Manager.Opts.Get<Environment.SpecialFolder>("sys_dataSpecialFolder")) : "",
                     Manager.Opts.Get<string>("sys_dataFolder"));
             DirInfoMaxRecursionDepth = Manager.Opts.Get<int>("sys_dirInfo_maxRecursionDepth");
-            Manager.Opts.RegisterChangeNotification("sys_dirInfo_maxRecursionDepth", delegate(string key, object value) { DirInfoMaxRecursionDepth = ( (int) value ); });
+            NotifyHandlers.Add(
+                Manager.Opts.RegisterChangeNotification("sys_dirInfo_maxRecursionDepth", delegate(string key, object value) { DirInfoMaxRecursionDepth = ( (int) value ); }));
         }
 
         public bool Exists(string path)

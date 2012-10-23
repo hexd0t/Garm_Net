@@ -21,6 +21,9 @@ namespace Garm.Options
             dict.Add("rndr_terrain_lods", new Entry<int>(3));//Min:1 (=>complete)
             dict.Add("rndr_terrain_lodDistances", new Entry<List<float>>(new List<float> { 20f, 35f }));
             dict.Add("rndr_terrain_lodFactors", new Entry<List<int>>(new List<int> { 2, 8 }));
+            dict.Add("rndr_adapterID", new Entry<int>(0, false, false, true));
+            dict.Add("rndr_hideCursor", new Entry<bool>(false));
+            dict.Add("rndr_windowedFullscreen", new Entry<bool>(true));
         }
     }
 }

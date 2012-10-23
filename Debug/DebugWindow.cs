@@ -141,7 +141,8 @@ namespace Debug
                     //LLThreads
                     var output = new StringBuilder();
                     output.AppendLine("Native Threads:");
-                    foreach(ProcessThread nativeThread in Process.GetCurrentProcess().Threads)
+                    var threads = Process.GetCurrentProcess().Threads;
+                    foreach(ProcessThread nativeThread in threads)
                     {
                         string Id = nativeThread.Id.ToString(hexa?"X":"d");
                         for(int i = 7; i > Id.Length; i--)

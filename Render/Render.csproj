@@ -104,6 +104,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="D2D\D2DInteropHandler.cs" />
+    <Compile Include="D2D\SharedTexture.cs" />
     <Compile Include="FreeflightCam.cs" />
     <Compile Include="Frustum.cs" />
     <Compile Include="IRenderable.cs" />

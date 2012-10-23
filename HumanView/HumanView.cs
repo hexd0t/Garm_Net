@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 using Garm.Base.Content.Terrain;
 using Garm.Base.Helper;
 using Garm.Base.Interfaces;
@@ -37,7 +38,7 @@ namespace Garm.View.Human
                 Window.Invoke((Action)Window.Close);
                 Window.Dispose();
             }
-            if(Render != null)
+            if(Render != null && !Render.Disposed)
                 Render.Dispose();
         }
 
@@ -52,8 +53,9 @@ namespace Garm.View.Human
             Window.Text = Manager.Opts.Get<string>("gui_windowTitle_client");
             NotifyHandlers.Add(Manager.Opts.RegisterChangeNotification("gui_windowTitle_client",
                         (key, value) => Window.BeginInvoke((Action)delegate { Window.Text = (string)value; })));
+
             Render = new RenderManager(Manager, Window);
-            Thread.Sleep(50);
+            Window.FormClosing += (sender, args) => Render.Dispose();
 
 #if DEBUG
             Console.WriteLine("[Info] Initializing RenderManager");
@@ -78,6 +80,7 @@ namespace Garm.View.Human
             {
                 Manager.Opts.UnregisterChangeNotification(notifyHandler);
             }
+            MainMenu.Dispose();
 #if DEBUG
             Console.WriteLine("[Info] Render stopped");
 #endif

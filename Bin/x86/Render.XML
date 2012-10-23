@@ -4,6 +4,20 @@
         <name>Render</name>
     </assembly>
     <members>
+        <member name="T:Garm.View.Human.Render.D2DInterop.SharedTexture">
+            <summary>
+            Derived class to secure that only Textures with Shared-Flag get to the D2D-Interop
+            </summary>
+        </member>
+        <member name="M:Garm.View.Human.Render.D2DInterop.SharedTexture.#ctor(Garm.View.Human.Render.D2DInterop.D2DInteropHandler,SlimDX.Direct3D11.Texture2DDescription)">
+            <summary>
+            Creates a default D3D11 Texture with forced Shared-Flag
+            </summary>
+            <param name="device"></param>
+            <param name="description"></param>
+            <param name="D3D10Dev"> </param>
+            <param name="D2DFactory"> </param>
+        </member>
         <member name="M:Garm.View.Human.Render.Frustum.Update(SlimDX.Matrix,SlimDX.Matrix)">
             <summary>
             Updates the frustum-planes
@@ -31,6 +45,36 @@
             </summary>
             <param name="points">The edges defining the Volume</param>
             <returns></returns>
+        </member>
+        <member name="T:Garm.View.Human.Render.IRenderable">
+            <summary>
+            Interface for Subrenderer
+            </summary>
+        </member>
+        <member name="M:Garm.View.Human.Render.IRenderable.Render">
+            <summary>
+            Render opaque elements for displaying
+            </summary>
+        </member>
+        <member name="M:Garm.View.Human.Render.IRenderable.UpdateStaticVars">
+            <summary>
+            Notifies on events changing the render-environment, notably the client size
+            </summary>
+        </member>
+        <member name="M:Garm.View.Human.Render.IRenderable.RenderTransparent">
+            <summary>
+            Render transparent elements for displying
+            </summary>
+        </member>
+        <member name="M:Garm.View.Human.Render.IRenderable.RenderStaticShadows">
+            <summary>
+            Render all non-moving elements without textures to create basic shadowmaps
+            </summary>
+        </member>
+        <member name="M:Garm.View.Human.Render.IRenderable.RenderDynamicShadows">
+            <summary>
+            Render all moving elements without textures to create dynamic shadowmaps
+            </summary>
         </member>
         <member name="T:Garm.View.Human.Render.Menu.MainMenuSubrender">
             <summary>

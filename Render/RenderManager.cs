@@ -4,10 +4,12 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Windows.Forms;
 using Garm.Base.Helper;
 using Garm.Base.Interfaces;
+using Garm.View.Human.Render.D2DInterop;
 using SlimDX;
 using SlimDX.D3DCompiler;
 using SlimDX.Direct3D11;
@@ -21,12 +23,15 @@ namespace Garm.View.Human.Render
 {
     public class RenderManager : Base.Abstract.Base
     {
+        public Adapter1 DXGIAdapter;
         public Device D3DDevice;
         public SwapChain SChain;
         public DeviceContext Context;
         public Control Output;
         public RenderTargetView RTVScreen;
         public bool Disposed;
+
+        public D2DInteropHandler D2DInterop;
 
         public Viewport OutputViewport;
         public Texture2D DiffuseTexture, ZTexture, NormalTexture;
@@ -68,6 +73,38 @@ namespace Garm.View.Human.Render
         private int _fpsRingbufferIndex;
         private HTimer _fpsTimer;
 
+        public bool Fullscreen
+        {
+            get { return _isFullscreen; }
+            set
+            {
+                var output = Output as Form;
+                if (output != null)
+                {
+                    if (!Manager.Opts.Get<bool>("rndr_windowedFullscreen"))
+                        SChain.IsFullScreen = !SChain.IsFullScreen;
+                    else if(value)
+                    {
+                        output.Invoke((Action)delegate
+                        {
+                            output.FormBorderStyle = FormBorderStyle.Sizable;
+                            output.WindowState = FormWindowState.Normal;
+                        });
+                    }
+                    else
+                    {
+                        output.Invoke((Action)delegate
+                        {
+                            output.FormBorderStyle = FormBorderStyle.None;
+                            output.WindowState = FormWindowState.Maximized;
+                        });
+                    }
+                    _isFullscreen = value;
+                }
+            }
+        }
+        private bool _isFullscreen;
+
         private Effect _effect;
         private EffectTechnique _composeTechnique;
         private EffectPass _composePass;
@@ -84,6 +121,7 @@ namespace Garm.View.Human.Render
 
         public void Initialize()
         {
+            DXGIAdapter = new Factory1().GetAdapter1(0);
             var swapDescription = new SwapChainDescription()
             {
                 BufferCount = 1,
@@ -96,10 +134,17 @@ namespace Garm.View.Human.Render
                 Flags = SwapChainFlags.AllowModeSwitch,
                 SwapEffect = SwapEffect.Discard
             };
-            Device.CreateWithSwapChain(DriverType.Hardware, DeviceCreationFlags.None,new[]{FeatureLevel.Level_10_0}, swapDescription, out D3DDevice,
+#if DEBUG
+            Device.CreateWithSwapChain(DXGIAdapter, DeviceCreationFlags.Debug | DeviceCreationFlags.BgraSupport, new[] { FeatureLevel.Level_10_0 }, swapDescription, out D3DDevice,
                                        out SChain);
+#else
+            Device.CreateWithSwapChain(DXGIAdapter, DeviceCreationFlags.BgraSupport, new[] { FeatureLevel.Level_10_0 }, swapDescription, out D3DDevice,
+                                       out SChain);
+#endif
             Context = D3DDevice.ImmediateContext;
-            
+
+            D2DInterop = new D2DInteropHandler(this);
+
             EnableWinEvents();
             InitOnce();
             InitDevice();
@@ -112,7 +157,10 @@ namespace Garm.View.Human.Render
             Output.KeyDown += (o, e) =>
             {
                 if (e.Alt && e.KeyCode == Keys.Enter)
-                    SChain.IsFullScreen = !SChain.IsFullScreen;
+                {
+                    //SChain.IsFullScreen = !SChain.IsFullScreen;
+                    Fullscreen = !Fullscreen;
+                }
             };
 
             Output.Resize += (o, e) => ResetDevice();
@@ -130,6 +178,9 @@ namespace Garm.View.Human.Render
         {
             Disposed = true;
             base.Dispose();
+            Context.OutputMerger.BlendState.Dispose();
+            Context.OutputMerger.DepthStencilState.Dispose();
+            D2DInterop.Dispose();
             DisposeTexturesRTVs();
             _composeLayout.Dispose();
             _composeVertices.Dispose();
@@ -174,7 +225,7 @@ namespace Garm.View.Human.Render
                 SampleDescription = new SampleDescription(1, 0),
                 BindFlags = BindFlags.RenderTarget | BindFlags.ShaderResource,
                 CpuAccessFlags = CpuAccessFlags.None,
-                OptionFlags = ResourceOptionFlags.None
+                OptionFlags = ResourceOptionFlags.Shared
             });
 
             RTVs[0] = new RenderTargetView(D3DDevice, DiffuseTexture, new RenderTargetViewDescription()
@@ -306,6 +357,7 @@ namespace Garm.View.Human.Render
                 MaximumLod = float.MaxValue
             });
             _effect.GetVariableByName("composeSampler").AsSampler().SetSamplerState(0, sampleMode);
+            sampleMode.Dispose();
             _effect.GetVariableByName("composeFlags").AsScalar().Set(
                 Manager.Opts.Get<bool>("rndr_rawGBufferView")?0x1:0
                 );
@@ -340,13 +392,33 @@ namespace Garm.View.Human.Render
                 CullMode = CullMode.Back
             });
 
+            var bsd = new BlendStateDescription();
+            bsd.RenderTargets[0].BlendEnable = true;
+
+            bsd.RenderTargets[0].SourceBlend = BlendOption.SourceAlpha;
+            bsd.RenderTargets[0].DestinationBlend = BlendOption.InverseSourceAlpha;
+            bsd.RenderTargets[0].BlendOperation = BlendOperation.Add;
+
+            bsd.RenderTargets[0].SourceBlendAlpha = BlendOption.One;
+            bsd.RenderTargets[0].DestinationBlendAlpha = BlendOption.Zero;
+            bsd.RenderTargets[0].BlendOperationAlpha = BlendOperation.Add;
+            bsd.RenderTargets[0].RenderTargetWriteMask = ColorWriteMaskFlags.All;
+
+            Context.OutputMerger.BlendState = BlendState.FromDescription(D3DDevice, bsd);
+
             NotifyHandlers.Add(Manager.Opts.RegisterChangeNotification("rndr_wireframe", delegate(string key, object value)
             {
                 Output.BeginInvoke((Action)delegate {
+                    var oldcullmode = CullMode.Back;
+                    if (SceneRasterizer != null)
+                    {
+                        oldcullmode = SceneRasterizer.Description.CullMode;
+                        SceneRasterizer.Dispose();
+                    }
                     SceneRasterizer = RasterizerState.FromDescription(D3DDevice, new RasterizerStateDescription()
                     {
                         FillMode = (((bool)value) ? FillMode.Wireframe : FillMode.Solid),
-                        CullMode = SceneRasterizer.Description.CullMode
+                        CullMode = oldcullmode
                     });
                 });
             }));
@@ -354,9 +426,15 @@ namespace Garm.View.Human.Render
             {
                 Output.BeginInvoke((Action)delegate
                 {
+                    var oldfillmode = FillMode.Solid;
+                    if (SceneRasterizer != null)
+                    {
+                        oldfillmode = SceneRasterizer.Description.FillMode;
+                        SceneRasterizer.Dispose();
+                    }
                     SceneRasterizer = RasterizerState.FromDescription(D3DDevice, new RasterizerStateDescription()
                     {
-                        FillMode =  SceneRasterizer.Description.FillMode,
+                        FillMode =  oldfillmode,
                         CullMode = (((bool)value) ? CullMode.Back : CullMode.None)
                     });
                 });
@@ -386,6 +464,8 @@ namespace Garm.View.Human.Render
 
         public void Render()
         {
+            if (Disposed)
+                return;
             Context.Rasterizer.SetViewports(OutputViewport);//Defines Output-dimensions, use in all passes except shadows
 
             ViewMatrix = Matrix.LookAtLH(ViewerLocation, ViewerLookAt, ViewerUpVector);
@@ -398,7 +478,7 @@ namespace Garm.View.Human.Render
             Context.ClearRenderTargetView(RTVs[0], Color.ForestGreen);
             Context.ClearRenderTargetView(RTVs[1], Color.Gray);
             Context.ClearDepthStencilView(DepthBufferView, DepthStencilClearFlags.Depth, 1f,0);
-            //Context.ClearRenderTargetView(RTVScreen, Color.DeepSkyBlue); //Clear screen (is overwritten anyways, for debugging draw-related things only)
+            Context.ClearRenderTargetView(RTVScreen, Color.DeepSkyBlue); //Clear screen (is overwritten anyways, for debugging draw-related things only)
             Context.OutputMerger.SetTargets(DepthBufferView, RTVs);
 
             Content.Update();
